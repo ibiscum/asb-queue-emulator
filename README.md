@@ -14,8 +14,7 @@ The Azure Service Bus Queue Emulator allows developers to emulate Azure Service 
   - [Project Structure](#project-structure)
   - [Contributing](#contributing)
 - [Testing](#testing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+- [License](./LICENSE)
 
 ## Features
 
@@ -135,7 +134,7 @@ This provides comprehensive documentation on all available API endpoints, includ
 
 ### Contributing
 
-For contributing guidelines, please refer to the [CONTRIBUTING.md](./CONTRIBUTING.md) file. *Not currently needed*
+For contributing guidelines, please refer to the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
 
 ## Testing
 
@@ -144,11 +143,3 @@ After making any changes, ensure all unit tests pass:
 ```bash
 go test ./...
 ```
-
-## License
-TBD
-
-## Acknowledgments
-
-- Azure Service Bus team for their comprehensive documentation.
-- The Go, Docker, RabbitMQ, and AMQP communities for their invaluable resources.
