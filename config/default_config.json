@@ -1,0 +1,12 @@
+{
+    "broker": {
+        "connectionString": "amqp://guest:guest@rabbitmq:5688/",
+        "type": "rabbitmq",
+        "queues": [
+            "test1",
+            "test2",
+            "test3"
+        ]
+    },
+    "serverPort": 4444
+}

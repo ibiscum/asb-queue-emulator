@@ -1,0 +1,132 @@
+paths:
+  /{queueName}/messages:
+    post:
+      operationId: sendMessage
+      parameters:
+        - description: broker properties
+          in: header
+          name: brokerProperties
+          type: string
+        - description: the queue name
+          in: path
+          name: queueName
+          required: true
+          type: string
+        - description: message content
+          in: body
+          name: messageContent
+          schema:
+             type: string
+      responses:
+        "201":
+          description: Message successfully sent to queue or topic.
+        "400":
+          description: Bad request.
+        "401":
+          description: Authorization failure.
+        "403":
+          description: Quota exceeded or message too large.
+        "410":
+          description: Specified queue or topic does not exist.
+        "500":
+          description: Internal error.
+
+  /{queueName}/messages/head:
+    post:
+      operationId: peekMessage
+      parameters:
+      - description: the queue name
+        in: path
+        name: queueName
+        required: true
+        type: string
+      responses:
+        '201':
+          description: Message successfully sent to queue or topic.
+          headers:
+            BrokerProperties:
+              type: string
+            Location:
+              type: string
+          schema:
+            type: string
+        "204":
+          description: No messages available within the specified timeout period..
+        "400":
+          description: Bad request.
+        "401":
+          description: Authorization failure.
+        "410":
+          description: Specified queue or subscription does not exist..
+        "500":
+          description: Internal error.
+    delete:
+      operationId: destructiveRead
+      parameters:
+        - description: the queue name
+          in: path
+          name: queueName
+          required: true
+          type: string
+        responses:
+          '200': 
+            description: Message successfully retrieved and deleted
+            headers:
+              BrokerProperties:
+                type: string
+              Location:
+                type: string
+            schema:
+              type: string
+          "204":
+            description: No messages available within the specified timeout period
+          "400":
+            description: Bad request.
+          "401":
+            description: Authorization failure
+          "410":
+            description: Specified queue or subscription does not exists.
+          "500":
+            descriptions: Internal error.
+
+  /{queueName}/messages/{messageId}/{lockToken}:
+    delete:
+      operationId: deleteMessage
+      parameters:
+        - description: the queue name
+          in: path
+          name: queueName
+          required: true
+          type: string
+        - description: The ID of the message to be deleted as returned in BrokerProperties{MessageId} by the Peek Message operation.
+          in: path
+          name: messageId
+          required: true
+          type: string
+        - description: The token of the lock of the message to be deleted as returned by the Peek Message operation in BrokerProperties{LockToken}.
+          in: path
+          name: lockToken
+          required: true
+          type: string
+      responses:
+        "200":
+          headers:
+            Location:
+              type: string
+            BrokerProperties:
+              type: string
+          description: Message successfully deleted..
+        "404":
+          description: No message was found with the specified MessageId or LockToken.
+        "204":
+          description: No messages available within the specified timeout period..
+        "400":
+          description: Bad request.
+        "401":
+          description: Authorization failure.
+        "410":
+          description: Specified queue or subscription does not exist.
+        "500":
+          description: Internal error.
+
+

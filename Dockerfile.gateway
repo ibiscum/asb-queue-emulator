@@ -1,0 +1,13 @@
+FROM mcr.microsoft.com/cbl-mariner/base/core:2.0
+RUN tdnf -y update
+RUN tdnf -y install ca-certificates
+
+COPY ./dist/gateway /app
+COPY ./pkg/amqp_python/certs /app/certs
+ENV CERT_LOCATION=/app/certs
+ENV HOST="0.0.0.0"
+ENV PORT=5671
+EXPOSE 5671
+
+# Set the entry point for the container to the compiled Python executable
+ENTRYPOINT ["/app/gateway", "--use-tls"]

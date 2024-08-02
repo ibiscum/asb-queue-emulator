@@ -1,0 +1,7 @@
+# ignore files
+asbemulator
+build/*
+dist/*
+*.pem
+*.pfx
+pkg/amqp_python/__pycache__/*

@@ -1,0 +1,15 @@
+swagger: "2.0"
+info:
+  description: azure service bus emulator
+  title: azure service bus
+  version: 1.0.0
+consumes:
+- text/plain
+- application/json
+produces:
+- text/plain
+- application/json
+schemes:
+- http
+paths: {}
+definitions: {}
