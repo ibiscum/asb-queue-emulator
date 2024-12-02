@@ -7,7 +7,7 @@ toolchain go1.23.0
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.8.0
 	github.com/Azure/azure-sdk-for-go/sdk/messaging/azservicebus v1.7.3
-	github.com/Azure/go-amqp v1.1.0
+	github.com/Azure/go-amqp v1.2.0
 	github.com/go-openapi/errors v0.22.0
 	github.com/go-openapi/loads v0.22.0
 	github.com/go-openapi/runtime v0.28.0
